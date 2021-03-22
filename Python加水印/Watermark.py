@@ -27,14 +27,14 @@ class pic_watermark():
         height, width, channel = np.shape(img)
         watermark = cv2.imread(self.wm_path)
         wm_height, wm_width = watermark.shape[0], watermark.shape[1]
-        x, y = list(range(height // 2)), list(range(width))
+        x, y = list(range(height // 2)), list(range(width // 2))
         random.seed(height + width)
         random.shuffle(x)
         random.shuffle(y)
         temp = np.zeros(img.shape)
         # 频谱中心对称，水印也要对称
         for i in range(height // 2):
-            for j in range(width):
+            for j in range(width // 2):
                 if x[i] < wm_height and y[j] < wm_width:
                     temp[i][j] = watermark[x[i]][y[j]]
                     temp[height - 1 - i][width - 1 - j] = temp[i][j]
@@ -61,11 +61,11 @@ class pic_watermark():
         result = np.zeros(watermark.shape)
         random.seed(height + width)
         x = list(range(height // 2))
-        y = list(range(width))
+        y = list(range(width // 2))
         random.shuffle(x)
         random.shuffle(y)
         for i in range(height // 2):
-            for j in range(width):
+            for j in range(width // 2):
                 result[x[i]][y[j]] = watermark[i][j]
         if not os.path.exists('./results/FFT'):
             os.makedirs('./results/FFT')
@@ -148,7 +148,7 @@ class word_watermark():
 
 
 if __name__ == '__main__':
-    # pic_watermark(img_path='./test.png', wm_path='./vm.png', alpha=15).encode()
+    pic_watermark(img_path='./test.png', wm_path='./vm.png', alpha=15).encode()
     pic_watermark(img_path='./results/FFT/encode.png', origin_path='./test.png').decode()
     # word_watermark(img_path='./test.png').encode()
     # data = word_watermark(img_path='./results/LSB/encode.png').decode()
