@@ -1,6 +1,4 @@
 # 图片加水印
-# 作者：Charles
-# 公众号：Charles的皮卡丘
 # 功能：
 # pic_watermark：基于FFT,将图片信息嵌入载体图片
 # word_watermark：基于LSB,将文字信息嵌入载体图片
@@ -43,9 +41,9 @@ class pic_watermark():
         result_fft = img_fft + self.alpha * temp
         result = np.fft.ifft2(result_fft)
         result = np.real(result)
-        if not os.path.exists('./results'):
-            os.makedirs('./results')
-        cv2.imwrite('./results/encode.png', result, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        if not os.path.exists('./results/FFT'):
+            os.makedirs('./results/FFT')
+        cv2.imwrite('./results/FFT/encode.png', result, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
         print('[INFO]:Watermark Successfully...')
 
     # 解水印
@@ -69,21 +67,21 @@ class pic_watermark():
         for i in range(height // 2):
             for j in range(width):
                 result[x[i]][y[j]] = watermark[i][j]
-        if not os.path.exists('./results'):
-            os.makedirs('./results')
-        cv2.imwrite('./results/decode.png', result, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        if not os.path.exists('./results/FFT'):
+            os.makedirs('./results/FFT')
+        cv2.imwrite('./results/FFT/decode.png', result, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
         print('[INFO]:Extract Successfully...')
 
 
 # 文字水印
 class word_watermark():
-    def __init__(self, data='公众号：Charles的皮卡丘', img_path=None):
+    def __init__(self, data='我想偷偷藏点什么sjsjsjs', img_path=None):
         self.img_path = img_path
         self.data = data
 
     def _zero_lsb(self, img):
         pixels = list(img.getdata())
-        # 原图像最低比特位置0
+        # 将原图像最低位置置为0
         pixels_new = [(r >> 1 << 1, g >> 1 << 1, b >> 1 << 1, t >> 1 << 1) for (r, g, b, t) in pixels]
         img_new = Image.new(img.mode, img.size)
         img_new.putdata(pixels_new)
@@ -91,12 +89,16 @@ class word_watermark():
 
     # 返回固定长度的二进制码
     def _binary(self, integer):
-        return "0" * (8 - (len(bin(integer)) - 2)) + bin(integer).replace('0b', '')
+        print(integer)
+        data = "0" * (8 - (len(bin(integer)) - 2)) + bin(integer).replace('0b', '')
+        print(data)
+        return data
 
     # 二进制转UTF-8
     def _Binary2String(self, binary):
         index = 0
         string = []
+        # 二进制必须去除标志位
         rec = lambda x, i: x[2:8] + (rec(x[8:], i - 1) if i > 1 else '') if x else ''
         fun = lambda x, i: x[i + 1:8] + rec(x[8:], i - 1)
         while index + 1 < len(binary):
@@ -124,9 +126,9 @@ class word_watermark():
                          index, (r, g, b, t) in enumerate(list(img_zlsb.getdata()))]
         encodedImage = Image.new(img.mode, img.size)
         encodedImage.putdata(encodedPixels)
-        if not os.path.exists('./results'):
-            os.makedirs('./results')
-        encodedImage.save('./results/encode.png')
+        if not os.path.exists('./results/LSB'):
+            os.makedirs('./results/LSB')
+        encodedImage.save('./results/LSB/encode.png')
         print('[INFO]:Watermark Successfully...')
 
     # 解水印
@@ -147,7 +149,7 @@ class word_watermark():
 
 if __name__ == '__main__':
     # pic_watermark(img_path='./test.png', wm_path='./vm.png', alpha=15).encode()
-    # pic_watermark(img_path='./results/encode.png', origin_path='./test.png').decode()
-    word_watermark(img_path='./test.png').encode()
-    data = word_watermark(img_path='./results/encode.png').decode()
-    print(data)
+    pic_watermark(img_path='./results/FFT/encode.png', origin_path='./test.png').decode()
+    # word_watermark(img_path='./test.png').encode()
+    # data = word_watermark(img_path='./results/LSB/encode.png').decode()
+    # print(data)

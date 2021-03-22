@@ -1,5 +1,4 @@
 # Python绘制朱利亚分形
-# 公众号：Charles的皮卡丘
 import numpy as np
 import matplotlib.pyplot as plt
 from numba import jit
@@ -28,7 +27,7 @@ def draw(xmin=-2, xmax=2, ymin=-1.6, ymax=1.6, width=800, height=640):
     axi = fig.add_axes([0, 0, 1, 1], aspect=1)
     axi.axis('off')
     axi.imshow(img, cmap='hot')
-    fig.savefig('julia.png')
+    fig.savefig('result/julia.png')
 
 
 if __name__ == '__main__':
