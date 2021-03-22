@@ -1,0 +1,32 @@
+from django.urls import path
+from testModel import views,multiTableQuery,myForms,auth
+
+urlpatterns = [
+    path('insertdb/', views.insertdb),
+    path('selectdb/', views.selectdb),
+    path('updatedb/', views.updatedb),
+    path('deletedb/', views.deletedb),
+    path('add_book/', views.add_book),
+    path('create_book/', views.create_book),
+    path('find_book/', views.find_book),
+    path('exclude_book/', views.exclude_book),
+    path('get_book/', views.get_book),
+    path('order_by_book/', views.order_by_book),
+    path('reverse_book/', views.reverse_book),
+    path('count_book/', views.count_book),
+    path('first_book/', views.first_book),
+    path('exists_book/', views.exists_book),
+    path('values_book/', views.values_book),
+    path('values_list_book/', views.values_list_book),
+    path('distinct_book/', views.distinct_book),
+    path('filter_book/', views.filter_book),
+    path('update_book/', views.update_book),
+    path('multi_add_book/', multiTableQuery.multi_add_book),
+    path('multi_add_book_2/', multiTableQuery.multi_add_book_2),
+    path('multi_add_book_3/', multiTableQuery.multi_add_book_3),
+    path('multi_add_book_4/', multiTableQuery.multi_add_book_4),
+    path('add_emp/', myForms.add_emp),
+    path('createUser/', auth.createUser),
+    path('login/', auth.login),
+    path('index/', auth.index),
+]
