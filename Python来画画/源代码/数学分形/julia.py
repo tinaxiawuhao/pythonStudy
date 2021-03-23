@@ -18,6 +18,7 @@ def escape(z):
 
 
 def draw(xmin=-2, xmax=2, ymin=-1.6, ymax=1.6, width=800, height=640):
+    # 复数步长的设置是通过j进行设置的，如5j。复数前表示的是，用几个数值来等分整个区间。
     y, x = np.ogrid[ymax: ymin: height * 2j, xmin: xmax: width * 2j]
     z = x + y * 1j
     img = np.asarray(np.frompyfunc(escape, 1, 1)(z)).astype(float)
