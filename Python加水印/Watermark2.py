@@ -13,10 +13,11 @@ def zh_ch(string):
 # R，G，B原理一样每个通道加一下
 # 要加水印照片
 img = cv2.imread("results/FFT/kewayi.jpeg")
+cv2.imshow(zh_ch("original"), img)
 # 切割大小
-dstImg = img[0:400,0:400]
+dstImg = img[0:400, 0:400]
 # 隐藏水印照
-mark = cv2.imread("results/FFT/mark.png")
+mark = cv2.imread("results/FFT/mark2.png")
 # 展示水印照
 cv2.imshow(zh_ch("mark"), mark)
 # 将大于0转为 True
@@ -32,8 +33,7 @@ a7 = cv2.bitwise_and(dstImg, t254)
 # 将水印放入最低位
 e = cv2.bitwise_or(a7, mark)
 
-cv2.imshow(zh_ch("原始图像"), dstImg)
-cv2.imshow(zh_ch("加水印图像"), e)
+cv2.imshow(zh_ch("addMark"), e)
 
 ##########################
 # 提取水印过程
@@ -43,7 +43,7 @@ wm = cv2.bitwise_and(e, t1)
 w = wm[:, :] > 0
 wm[w] = 255
 
-cv2.imshow(zh_ch("提取水印"), wm)
+cv2.imshow(zh_ch("Extract watermark"), wm)
 
 cv2.waitKey()
 cv2.destroyWindow()
