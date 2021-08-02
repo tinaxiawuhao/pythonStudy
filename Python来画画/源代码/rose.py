@@ -1,5 +1,4 @@
 # Python画玫瑰
-# 公众号：Charles的皮卡丘
 import turtle
 import time
 

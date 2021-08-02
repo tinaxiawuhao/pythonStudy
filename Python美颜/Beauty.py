@@ -1,6 +1,4 @@
 # Python美颜脚本
-# 作者：Charles
-# 公众号：Charles的皮卡丘
 import cv2
 import dlib
 import numpy as np

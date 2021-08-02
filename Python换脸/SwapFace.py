@@ -1,6 +1,4 @@
 # 基于OpenCV的面部特征交换
-# 作者: Charles
-# 公众号: Charles的皮卡丘
 import numpy as np
 import dlib
 import cv2

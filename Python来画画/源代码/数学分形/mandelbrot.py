@@ -1,5 +1,4 @@
 # Python绘制曼德勃罗集
-# 公众号：Charles的皮卡丘
 import numpy as np
 from PIL import Image
 from numba import jit

@@ -1,6 +1,4 @@
 # coding: utf-8
-# 作者: Charles
-# 公众号: Charles的皮卡丘
 # 游戏运行主程序
 import sys
 import pygame
@@ -88,7 +86,7 @@ def main():
 	pygame.init()
 	pygame.mixer.init()
 	screen = pygame.display.set_mode((630, 630))
-	pygame.display.set_caption("坦克大战-公众号: Charles的皮卡丘")
+	pygame.display.set_caption("坦克大战")
 	# 加载图片
 	bg_img = pygame.image.load("./images/others/background.png")
 	# 加载音效

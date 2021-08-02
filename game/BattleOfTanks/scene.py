@@ -1,6 +1,4 @@
 # coding: utf-8
-# 作者: Charles
-# 公众号: Charles的皮卡丘
 # 场景类(墙、河流、树、冰)
 import pygame
 import random

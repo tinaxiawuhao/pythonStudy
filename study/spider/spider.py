@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests, sys
-import threading
 
 """
 类说明:下载《笔趣看》网小说《一念永恒》

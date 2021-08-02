@@ -1,5 +1,4 @@
 # Python画爱心
-# 公众号：Charles的皮卡丘
 import turtle
 import time
 

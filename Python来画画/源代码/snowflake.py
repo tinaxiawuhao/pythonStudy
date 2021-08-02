@@ -1,5 +1,4 @@
 # Python画雪花
-# 公众号：Charles的皮卡丘
 import turtle
 from random import *
 

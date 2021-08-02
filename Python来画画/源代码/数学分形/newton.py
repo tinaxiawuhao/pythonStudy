@@ -1,5 +1,4 @@
 # Python绘制牛顿分形
-# 公众号：Charles的皮卡丘
 import numpy as np
 import matplotlib.pyplot as plt
 from numba import jit
