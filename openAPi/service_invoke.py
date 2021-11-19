@@ -166,5 +166,8 @@ if __name__ == "__main__":
     start, avg, m = 26794973, 42, 6
     start, avg, m = 28066189, 41.5, 7
     start, avg, m = 29364987, 41, 8
+    start, avg, m = 30663992, 41, 9
+    start, avg, m = 31908500, 41, 10
+    start, avg, m = 33209050, 41, 11
 
     main(start, avg, m)
