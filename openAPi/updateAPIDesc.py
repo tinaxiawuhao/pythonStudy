@@ -8,32 +8,23 @@ class Config:
 
 
 # 打开数据库连接，不指定数据库
-# conn = pymysql.connect(host="10.206.97.227", port=3329, user="app", passwd="V)4r28d4pRg-AEHa")
-conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="123456")
+conn = pymysql.connect(host="10.206.97.227", port=3329, user="app", passwd="V)4r28d4pRg-AEHa")
+# conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="123456")
 conn.select_db('ag_admin')
 # 获取游标
-cur = conn.cursor()
-# 查询语句
-sql = "SELECT idApi,description FROM ag_api"
+cursor = conn.cursor()
+# 修改语句
+sql_update = "UPDATE ag_api SET description = %s WHERE idApi = %s"
 
-results =[]
+results = []
 des = []
 des_add = []
 
+
 def close_mysql():
-    cur.close()
+    cursor.close()
     conn.close()
     print('sql执行成功')
-
-def select_api():
-    try:
-        # 执行SQL语句
-        cur.execute(sql)
-        # 获取所有记录列表
-        results = cur.fetchall()
-        print("查询完成")
-    except:
-        print("Error: unable to fecth data")
 
 
 # 读取文件
@@ -45,29 +36,28 @@ def desc_reader():
     wb = xws.Book(Config.apis)
     sheet = wb.sheets["sheet1"]
     # 读取全部数据
-    list_value = sheet.range('A2:B8019').value
-
-
-    # 打开了就要关闭
-    wb.close()
-    # app.quit()
-
-def append_desc():
-    # SQL 更新语句
-    for api in results:
-        sql = "UPDATE ag_api SET description = "".join(row[1].split()) + des_add WHERE idApi = api[0]"
+    list_value = sheet.range('A1:C8016').value
+    for i in range(len(list_value)):
+        # 插入数据
+        value1 = list_value[i][0].strip()
+        value2 = list_value[i][1].strip()
+        value3 = str(list_value[i][2])
         try:
             # 执行SQL语句
-            cur.execute(sql)
+            update_data = (value2 + "--开发者:" + str(value3), value1)
+            cursor.execute(sql_update, update_data)
             # 提交到数据库执行
             conn.commit()
         except:
             # 发生错误时回滚
             conn.rollback()
-    print("插入完成")
+        print("修改完成" + str(i))
+    # 打开了就要关闭
+    wb.close()
+    # app.quit()
+
 
 def main():
-    select_api()
     # 读取desc文件
     desc_reader()
     close_mysql()
