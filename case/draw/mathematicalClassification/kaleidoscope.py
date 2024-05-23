@@ -32,7 +32,7 @@ def draw(imgsize=500):
     ax = fig.add_axes([0, 0, 1, 1], aspect=1)
     ax.axis('off')
     ax.imshow(img)
-    fig.savefig('result/kaleidoscope.png')
+    fig.savefig('case/draw/mathematicalClassification/result/kaleidoscope.png')
 
 
 if __name__ == '__main__':

@@ -40,7 +40,7 @@ def draw(imgsize=600):
     axi = fig.add_axes([0, 0, 1, 1], aspect=1)
     axi.axis('off')
     axi.imshow(img, cmap='hot')
-    fig.savefig('result/newton.png')
+    fig.savefig('case/draw/mathematicalClassification/result/newton.png')
     
 
 if __name__ == '__main__':

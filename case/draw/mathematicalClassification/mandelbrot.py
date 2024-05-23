@@ -34,7 +34,7 @@ def draw(xmin=-2.1, xmax=0.8, ymin=-1.16, ymax=1.16, width=800, height=640):
     z = x + y*1j
     red, green, blue = np.asarray(np.frompyfunc(iterate, 1, 3)(z)).astype(np.float32)
     img = np.dstack((red, green, blue))
-    Image.fromarray(np.uint8(img*255)).save('result/mandelbrot.png')
+    Image.fromarray(np.uint8(img*255)).save('case/draw/mathematicalClassification/result/mandelbrot.png')
 
 
 if __name__ == '__main__':

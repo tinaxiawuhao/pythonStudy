@@ -29,7 +29,7 @@ def draw(xmin=-2, xmax=2, ymin=-1.6, ymax=1.6, width=800, height=640):
     axi = fig.add_axes([0, 0, 1, 1], aspect=1)
     axi.axis('off')
     axi.imshow(img, cmap='hot')
-    fig.savefig('result/julia.png')
+    fig.savefig('case/draw/mathematicalClassification/result/julia.png')
 
 
 if __name__ == '__main__':
