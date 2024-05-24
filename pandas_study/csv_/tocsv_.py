@@ -9,4 +9,4 @@ csv_data = info.to_csv()
 print('\nCSV String Values:\n', csv_data) 
 
 # 保存csv文件
-csv_data = info.to_csv("pandas_study/csv/pandas.csv",sep='|')
+csv_data = info.to_csv("pandas_study/result/pandas.csv",sep='|')

@@ -9,8 +9,8 @@ import multiprocessing
 def music_play():
 	pygame.mixer.init()
 	while True:
-		music_name = str(random.randint(1, 3)) + '.mp3'
-		pygame.mixer.music.load('case/confession/music/%s' % music_name)
+		music_name = str(random.randint(2, 3)) + '.mp3'
+		pygame.mixer.music.load('music/%s' % music_name)
 		pygame.mixer.music.play(start=1.0)
 		time.sleep(120)
 		pygame.mixer.music.stop()

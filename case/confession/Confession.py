@@ -33,7 +33,7 @@ if __name__ == '__main__':
 		text = processChinese(text, stopwords)
 	back_colorimg = imageio.imread("case/confession/image/love.jpg")
 	WC = WordCloud(
-				font_path='case/confession/fonts/4.ttf',
+				font_path='fonts/4.ttf',
 				background_color="black",
 				max_words=2000,
 				mask=back_colorimg,

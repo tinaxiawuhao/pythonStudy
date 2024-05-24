@@ -52,7 +52,7 @@ class easy_analysis():
 		frequency = [x[1] for x in count[-num:]]
 		names = [x[0] for x in count[-num:]]
 		ax.barh(range(num), frequency, color='skyblue', align='center')
-		font = FontProperties(fname="case/novel/fonts/simkai.ttf")
+		font = FontProperties(fname="fonts/simkai.ttf")
 		ax.set_title(title, fontproperties=font)
 		ax.set_yticks(range(num))
 		ax.set_yticklabels(names, fontproperties=font)
@@ -70,7 +70,7 @@ class easy_analysis():
 			else:
 				word_vectors = np.vstack((word_vectors, model[name]))
 		np_names = np.array(exist_names)
-		font = FontProperties(fname="case/novel/fonts/simkai.ttf")
+		font = FontProperties(fname="fonts/simkai.ttf")
 		Y = hierarchy.linkage(word_vectors, method='ward')
 		_, ax = plt.subplots(figsize=(10, 40))
 		Z = hierarchy.dendrogram(Y, orientation='right')
