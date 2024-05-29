@@ -30,8 +30,8 @@ c = np.array([[[  0,  1,  2],  # a 3D array (two stacked 2D arrays)
                [[100, 101, 102],
                 [110, 112, 113]]])
 print(c.shape)
-print(c[1, ...])  # same as c[1, :, :] or c[1]
-print(c[..., 2])  # same as c[:, :, 2]
+print(c[1, ])  # same as c[1, :, :] or c[1]
+print(c[, 2])  # same as c[:, :, 2]
 print("====================")
 
 for row in b:
@@ -61,7 +61,7 @@ print(ind)
 print("====================")
 # times corresponding to the maxima
 # time_max = data[ind]
-data_max = data[ind, range(data.shape[1])]  # => data[ind[0], 0], data[ind[1], 1]...
+data_max = data[ind, range(data.shape[1])]  # => data[ind[0], 0], data[ind[1], 1]
 # print(time_max)
 print(data_max)
 print("====================")
