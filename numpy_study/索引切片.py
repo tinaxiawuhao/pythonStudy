@@ -60,9 +60,9 @@ ind = data.argmax(axis=0)
 print(ind)
 print("====================")
 # times corresponding to the maxima
-time_max = data[ind]
+# time_max = data[ind]
 data_max = data[ind, range(data.shape[1])]  # => data[ind[0], 0], data[ind[1], 1]...
-print(time_max)
+# print(time_max)
 print(data_max)
 print("====================")
 print(np.all(data_max == data.max(axis=0)))
