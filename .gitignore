@@ -1,0 +1,9 @@
+# 忽略文件夹
+.venv/
+pytorch/data
+pytorch/runs
+*.pth
+pytorch/*.pth
+
+# 忽略特定文件
+*.log
